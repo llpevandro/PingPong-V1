@@ -27,12 +27,26 @@
         canvasContext = canvasElement.getContext("2d")
 
         const lineWidth = 20
+
         const field = {
             w: window.innerWidth,
             h: window.innerHeight,
             draw: function(){
                 canvasContext.fillStyle = "#286047"
-                canvasContext.fillRect(0,0, window.innerWidth, window.innerHeight)
+                canvasContext.fillRect(0,0, this.w, this.h)
+            }
+        }
+
+        const line = {
+            w: 15,
+            h: field.h,
+            draw: function(){
+                canvasContext.fillStyle = "#ffffff"
+                canvasContext.fillRect(
+                field.w / 2 - this.w / 2,
+                0,
+                this.w, 
+                this.h)
             }
         }
 
@@ -46,13 +60,10 @@
 
         function draw(){
            field.draw()
+           line.draw()
             
             // linha do meio campo
-            canvasContext.fillStyle = "#ffffff"
-            canvasContext.fillRect(field.w / 2 - lineWidth / 2,
-            0,
-            lineWidth, 
-            field.h)
+           
 
             // raquete esquerda
             canvasContext.fillRect(10,
