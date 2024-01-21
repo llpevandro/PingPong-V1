@@ -59,6 +59,14 @@
             canvasContext.arc(200, 300, 20, 0, 2 * Math.PI, false);
             canvasContext.fill();
 
+            // placar
+            canvasContext.font = "bold 72px Arial"
+            canvasContext.textAlign = "center"
+            canvasContext.textBaseline = "top"
+            canvasContext.fillStyle = "#01341D"
+            canvasContext.fillText('3', window.innerWidth / 4, 50) // ('texto', x, y)
+            canvasContext.fillText('1', window.innerWidth / 4 + window.innerWidth / 2 , 50) // ('texto', x, y)
+
         }
 
         setup()
