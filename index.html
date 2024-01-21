@@ -13,14 +13,14 @@
             background-color: #286047;
         }
 
-        h1{
+        #tituloJogo{
             background-color: brown;
             display: inline-block;
         }
     </style>
 </head>
 <body>
-    <h1>Jogo Ping Pong</h1>
+    <h1 id="tituloJogo">Jogo Ping Pong</h1>
     <canvas></canvas>
     <script>
         const canvasElement = document.querySelector("canvas"),
@@ -78,7 +78,20 @@
             }
         }
 
-        // arc (x, y, r, 0, 0.0 * Math.PI, false)
+        const score = {
+            human: 1,
+            computer: 2,
+            draw: function(){
+            canvasContext.font = "bold 72px Arial"
+            canvasContext.textAlign = "center"
+            canvasContext.textBaseline = "top"
+            canvasContext.fillStyle = "#01341D"
+            canvasContext.fillText(this.human, field.w / 4, 50) // ('texto', x, y)
+            canvasContext.fillText(this.computer, field.w / 4 + field.w / 2 , 50) // ('texto', x, y)
+            computer
+            }
+        }
+
         const ball = {
             x: 300,
             y: 200,
@@ -90,16 +103,12 @@
 
             }
         }
-
-
-
+        
         function setup(){
             canvasElement.width = canvasContext.width = field.w
             canvasElement.height = canvasContext.height = field.h
 
         }
-        // fillRect(x, y, width, height)
-        // fillRect(x, y, largura, altura)
 
         function draw(){
            field.draw()
@@ -107,18 +116,7 @@
            leftPaddle.draw()
            rightPaddle.draw()
            ball.draw()
-
-            // bolinha
-
-            
-            // placar
-            canvasContext.font = "bold 72px Arial"
-            canvasContext.textAlign = "center"
-            canvasContext.textBaseline = "top"
-            canvasContext.fillStyle = "#01341D"
-            canvasContext.fillText('3', field.w / 4, 50) // ('texto', x, y)
-            canvasContext.fillText('1', field.w / 4 + field.w / 2 , 50) // ('texto', x, y)
-
+           score.draw()
         }
 
         setup()
