@@ -78,6 +78,19 @@
             }
         }
 
+        // arc (x, y, r, 0, 0.0 * Math.PI, false)
+        const ball = {
+            x: 300,
+            y: 200,
+            r: 20,
+            draw: function(){
+                canvasContext.beginPath();
+                canvasContext.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+                canvasContext.fill();
+
+            }
+        }
+
 
 
         function setup(){
@@ -93,13 +106,11 @@
            line.draw()
            leftPaddle.draw()
            rightPaddle.draw()
+           ball.draw()
 
             // bolinha
-            // arc (x, y, r, 0, 0.0 * Math.PI, false)
-            canvasContext.beginPath();
-            canvasContext.arc(200, 300, 20, 0, 2 * Math.PI, false);
-            canvasContext.fill();
 
+            
             // placar
             canvasContext.font = "bold 72px Arial"
             canvasContext.textAlign = "center"
