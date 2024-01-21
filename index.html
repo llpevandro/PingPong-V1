@@ -88,7 +88,6 @@
             canvasContext.fillStyle = "#01341D"
             canvasContext.fillText(this.human, field.w / 4, 50) // ('texto', x, y)
             canvasContext.fillText(this.computer, field.w / 4 + field.w / 2 , 50) // ('texto', x, y)
-            computer
             }
         }
 
@@ -96,11 +95,17 @@
             x: 300,
             y: 200,
             r: 20,
+            speed: 5,
+            _move: function(){
+                this.x += 1 * this.speed
+                this.y += 1 * this.speed
+            },
             draw: function(){
-                canvasContext.beginPath();
-                canvasContext.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
-                canvasContext.fill();
+                canvasContext.beginPath()
+                canvasContext.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+                canvasContext.fill()
 
+                this._move()
             }
         }
         
@@ -121,6 +126,8 @@
 
         setup()
         draw()
+
+        window.setInterval(draw, 1000 / 60)
 
     </script>
 </body>
