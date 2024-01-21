@@ -24,7 +24,8 @@
     <canvas></canvas>
     <script>
         const canvasElement = document.querySelector("canvas"),
-        canvasContext = canvasElement.getContext("2d")
+        canvasContext = canvasElement.getContext("2d"),
+        gapX = 10;
 
         const lineWidth = 20
 
@@ -50,6 +51,35 @@
             }
         }
 
+        const leftPaddle = {
+            x: gapX,
+            y: 100,
+            w: line.w,
+            h: 200,
+            draw: function(){
+                canvasContext.fillStyle = "#ffffff"
+                canvasContext.fillRect(this.x,
+                this.y,
+                this.w,
+                this.h)
+            }
+        }
+
+        const rightPaddle = {
+            x: field.w - lineWidth - gapX,
+            y: 100,
+            w: line.w,
+            h: 200,
+            draw: function(){
+                canvasContext.fillRect(this.x,
+                this.y,
+                this.w,
+                this.h)
+            }
+        }
+
+
+
         function setup(){
             canvasElement.width = canvasContext.width = field.w
             canvasElement.height = canvasContext.height = field.h
@@ -61,21 +91,8 @@
         function draw(){
            field.draw()
            line.draw()
-            
-            // linha do meio campo
-           
-
-            // raquete esquerda
-            canvasContext.fillRect(10,
-            400,
-            lineWidth,
-            200)
-
-            // raquete direita
-            canvasContext.fillRect(field.w - lineWidth - 10,
-            400,
-            lineWidth,
-            200)
+           leftPaddle.draw()
+           rightPaddle.draw()
 
             // bolinha
             // arc (x, y, r, 0, 0.0 * Math.PI, false)
