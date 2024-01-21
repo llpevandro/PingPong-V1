@@ -10,6 +10,12 @@
             overflow: hidden;
             margin: 0;
             padding: 0;
+            background-color: #286047;
+        }
+
+        h1{
+            background-color: brown;
+            display: inline-block;
         }
     </style>
 </head>
@@ -21,25 +27,32 @@
         canvasContext = canvasElement.getContext("2d")
 
         const lineWidth = 20
+        const field = {
+            w: window.innerWidth,
+            h: window.innerHeight,
+            draw: function(){
+                canvasContext.fillStyle = "#286047"
+                canvasContext.fillRect(0,0, window.innerWidth, window.innerHeight)
+            }
+        }
 
         function setup(){
-            canvasElement.width = canvasContext.width = window.innerWidth
-            canvasElement.height = canvasContext.height = window.innerHeight
+            canvasElement.width = canvasContext.width = field.w
+            canvasElement.height = canvasContext.height = field.h
 
         }
         // fillRect(x, y, width, height)
         // fillRect(x, y, largura, altura)
 
         function draw(){
-            canvasContext.fillStyle = "#286047"
-            canvasContext.fillRect(0,0, window.innerWidth, window.innerHeight)
+           field.draw()
             
             // linha do meio campo
             canvasContext.fillStyle = "#ffffff"
-            canvasContext.fillRect(window.innerWidth / 2 - lineWidth / 2,
+            canvasContext.fillRect(field.w / 2 - lineWidth / 2,
             0,
             lineWidth, 
-            window.innerHeight)
+            field.h)
 
             // raquete esquerda
             canvasContext.fillRect(10,
@@ -48,7 +61,7 @@
             200)
 
             // raquete direita
-            canvasContext.fillRect(window.innerWidth - lineWidth - 10,
+            canvasContext.fillRect(field.w - lineWidth - 10,
             400,
             lineWidth,
             200)
@@ -64,8 +77,8 @@
             canvasContext.textAlign = "center"
             canvasContext.textBaseline = "top"
             canvasContext.fillStyle = "#01341D"
-            canvasContext.fillText('3', window.innerWidth / 4, 50) // ('texto', x, y)
-            canvasContext.fillText('1', window.innerWidth / 4 + window.innerWidth / 2 , 50) // ('texto', x, y)
+            canvasContext.fillText('3', field.w / 4, 50) // ('texto', x, y)
+            canvasContext.fillText('1', field.w / 4 + field.w / 2 , 50) // ('texto', x, y)
 
         }
 
