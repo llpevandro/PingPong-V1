@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Ping Pong</title>
+
+    <style>
+        * {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo Ping Pong</h1>
+    <canvas></canvas>
+    <script>
+        const canvasElement = document.querySelector("canvas"),
+        canvasContext = canvasElement.getContext("2d")
+
+        const lineWidth = 20
+
+        function setup(){
+            canvasElement.width = canvasContext.width = window.innerWidth
+            canvasElement.height = canvasContext.height = window.innerHeight
+
+        }
+        // fillRect(x, y, width, height)
+        // fillRect(x, y, largura, altura)
+
+        function draw(){
+            canvasContext.fillStyle = "#286047"
+            canvasContext.fillRect(0,0, window.innerWidth, window.innerHeight)
+            
+            // linha do meio campo
+            canvasContext.fillStyle = "#ffffff"
+            canvasContext.fillRect(window.innerWidth / 2 - lineWidth / 2,
+            0,
+            lineWidth, 
+            window.innerHeight)
+
+            // raquete esquerda
+            canvasContext.fillRect(10,
+            400,
+            lineWidth,
+            200)
+
+            // raquete direita
+            canvasContext.fillRect(window.innerWidth - lineWidth - 10,
+            400,
+            lineWidth,
+            200)
+
+            // bolinha
+            // arc (x, y, r, 0, 0.0 * Math.PI, false)
+            canvasContext.beginPath();
+            canvasContext.arc(200, 300, 20, 0, 2 * Math.PI, false);
+            canvasContext.fill();
+
+        }
+
+        setup()
+        draw()
+
+    </script>
+</body>
+</html>
