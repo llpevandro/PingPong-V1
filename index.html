@@ -101,7 +101,7 @@
             x: 0,
             y: 0,
             r: 20,
-            speed: 5,
+            speed: 3,
             directionY: 1,
             directionX: 1,
             _calcPosition: function () {
@@ -145,9 +145,14 @@
             _reverseX: function () {
                 this.directionX *= -1
             },
+            _speedUp: function(){
+                this.speed += 3
+            },
             _pointUp: function () {
                 this.x = field.w / 2
                 this.y = field.h / 2
+                this._speedUp()
+
             },
             _move: function () {
                 this.x += this.directionX * this.speed
