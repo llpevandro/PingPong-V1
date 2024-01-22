@@ -69,8 +69,16 @@
             y: 100,
             w: line.w,
             h: 200,
+            speedPaddle: 5,
             _move: function () {
-                this.y = ball.y
+                if (this.y + this.h / 2 < ball.y + ball.r){
+                    this.y += this.speedPaddle
+                } else {
+                    this.y -= this.speedPaddle
+                }
+            }, 
+            speedPaddleUp: function() {
+                this.speedPaddle += 2
             },
             draw: function () {
                 canvasContext.fillRect(this.x, this.y, this.w, this.h)
@@ -79,8 +87,8 @@
         }
 
         const score = {
-            human: 1,
-            computer: 2,
+            human: 0,
+            computer: 0,
             increaseHuman: function () {
                 this.human++
             },
@@ -149,9 +157,11 @@
                 this.speed += 3
             },
             _pointUp: function () {
+                this._speedUp()
+                rightPaddle.speedPaddleUp()
+
                 this.x = field.w / 2
                 this.y = field.h / 2
-                this._speedUp()
 
             },
             _move: function () {
@@ -203,7 +213,7 @@
         }
 
         setup()
-        main()
+        // main()
 
         canvasElement.addEventListener('mousemove', function (e) {
             mouse.x = e.pageX
